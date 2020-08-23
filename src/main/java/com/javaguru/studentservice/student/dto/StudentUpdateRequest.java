@@ -1,17 +1,21 @@
-package com.javaguru.studentservice.dto;
+package com.javaguru.studentservice.student.dto;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
-public class StudentDto {
-    private String id;
-    private String name;
-    private String lastName;
+public class StudentUpdateRequest {
 
-    public StudentDto(String id, String name, String lastName) {
-        this.id = id;
-        this.name = name;
-        this.lastName = lastName;
-    }
+    @NotEmpty
+    private String id;
+
+    @NotEmpty
+    @Size(min = 3, max = 30)
+    private String name;
+
+    @NotEmpty
+    @Size(min = 3, max = 30)
+    private String lastName;
 
     public String getId() {
         return id;
@@ -41,7 +45,7 @@ public class StudentDto {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        StudentDto that = (StudentDto) o;
+        StudentUpdateRequest that = (StudentUpdateRequest) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(lastName, that.lastName);
@@ -54,7 +58,7 @@ public class StudentDto {
 
     @Override
     public String toString() {
-        return "StudentDto{" +
+        return "StudentUpdateRequest{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
