@@ -11,6 +11,15 @@ public class StudentEntity {
     private String id;
     private String name;
     private String lastName;
+    private String quote;
+
+    public String getQuote() {
+        return quote;
+    }
+
+    public void setQuote(String quote) {
+        this.quote = quote;
+    }
 
     public String getId() {
         return id;
@@ -43,12 +52,13 @@ public class StudentEntity {
         StudentEntity that = (StudentEntity) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(name, that.name) &&
-                Objects.equals(lastName, that.lastName);
+                Objects.equals(lastName, that.lastName) &&
+                Objects.equals(quote, that.quote);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, lastName);
+        return Objects.hash(id, name, lastName, quote);
     }
 
     @Override
@@ -57,6 +67,7 @@ public class StudentEntity {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", quote='" + quote + '\'' +
                 '}';
     }
 }

@@ -1,0 +1,1 @@
+ALTER TABLE students ADD CONSTRAINT uq_last_name UNIQUE (last_name);

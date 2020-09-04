@@ -2,16 +2,19 @@ package com.javaguru.studentservice.student.dto;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
 public class StudentCreateRequest {
 
     @NotEmpty
-    @Pattern(regexp="^[a-zA-Z-]{3,32}",message="length must be in range(3-32) and may contain only letters")
+    @Size(min = 3, max = 30, message = "length must be in range(3-32)")
+    @Pattern(regexp = "^[a-zA-Z-]+$", message = "word may contain only letters")
     private String name;
 
     @NotEmpty
-    @Pattern(regexp="^[a-zA-Z-]{3,32}",message="length must be in range(3-32) and may contain only letters")
+    @Size(min = 3, max = 30, message = "length must be in range(3-32)")
+    @Pattern(regexp = "^[a-zA-Z-]+$", message = "word may contain only letters")
     private String lastName;
 
     public String getName() {

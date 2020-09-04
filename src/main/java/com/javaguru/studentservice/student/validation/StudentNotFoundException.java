@@ -5,6 +5,6 @@ import com.javaguru.studentservice.core.exceptions.ItemNotFoundException;
 public class StudentNotFoundException extends ItemNotFoundException {
 
     public StudentNotFoundException(String message) {
-        super("Student is not found");
+        super(StudentValidationMessages.STUDENT_NOT_FOUND);
     }
 }
