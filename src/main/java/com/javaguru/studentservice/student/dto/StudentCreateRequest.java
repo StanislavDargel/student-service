@@ -1,5 +1,7 @@
 package com.javaguru.studentservice.student.dto;
 
+import com.javaguru.studentservice.student.validation.StudentValidationMSG;
+
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -8,13 +10,13 @@ import java.util.Objects;
 public class StudentCreateRequest {
 
     @NotEmpty
-    @Size(min = 3, max = 30, message = "length must be in range(3-32)")
-    @Pattern(regexp = "^[a-zA-Z-]+$", message = "word may contain only letters")
+    @Size(min = 3, max = 30, message = StudentValidationMSG.INCORRECT_NAME_LENGTH)
+    @Pattern(regexp = "^[a-zA-Z]+$", message = StudentValidationMSG.INCORRECT_NAME_SYMBOLS)
     private String name;
 
     @NotEmpty
-    @Size(min = 3, max = 30, message = "length must be in range(3-32)")
-    @Pattern(regexp = "^[a-zA-Z-]+$", message = "word may contain only letters")
+    @Size(min = 3, max = 30, message = StudentValidationMSG.INCORRECT_NAME_LENGTH)
+    @Pattern(regexp = "^[a-zA-Z]+$", message = StudentValidationMSG.INCORRECT_NAME_SYMBOLS)
     private String lastName;
 
     public String getName() {

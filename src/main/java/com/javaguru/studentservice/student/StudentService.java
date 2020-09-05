@@ -8,7 +8,7 @@ import com.javaguru.studentservice.student.dto.StudentCreateRequest;
 import com.javaguru.studentservice.student.dto.StudentResponse;
 import com.javaguru.studentservice.student.dto.StudentUpdateRequest;
 import com.javaguru.studentservice.student.validation.StudentNotFoundException;
-import com.javaguru.studentservice.student.validation.StudentValidationMessages;
+import com.javaguru.studentservice.student.validation.StudentValidationMSG;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,12 +44,12 @@ public class StudentService {
                         studentEntity.getName(),
                         studentEntity.getLastName(),
                         studentEntity.getQuote()))
-                .orElseThrow(() -> new StudentNotFoundException(StudentValidationMessages.STUDENT_NOT_FOUND_BY_ID + id));
+                .orElseThrow(() -> new StudentNotFoundException(StudentValidationMSG.STUDENT_NOT_FOUND_BY_ID + id));
     }
 
     public void deleteStudentById(String id) {
         if (!repository.existsById(id)) {
-            throw new StudentNotFoundException(StudentValidationMessages.STUDENT_NOT_FOUND_BY_ID + id);
+            throw new StudentNotFoundException(StudentValidationMSG.STUDENT_NOT_FOUND_BY_ID + id);
         }
         repository.deleteById(id);
     }
@@ -65,7 +65,7 @@ public class StudentService {
 
     public void update(String id, StudentUpdateRequest updateRequest) {
         StudentEntity foundedStudent = repository.findById(id)
-                .orElseThrow(() -> new StudentNotFoundException(StudentValidationMessages.STUDENT_NOT_FOUND_BY_ID + id));
+                .orElseThrow(() -> new StudentNotFoundException(StudentValidationMSG.STUDENT_NOT_FOUND_BY_ID + id));
         foundedStudent.setName(updateRequest.getName());
         foundedStudent.setLastName(updateRequest.getLastName());
         repository.save(foundedStudent);
